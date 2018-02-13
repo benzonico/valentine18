@@ -1,5 +1,15 @@
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(window).scroll(function(){
+	  $(".message>p").each(
+    	function(i, p) {
+          $(p).css("opacity", (p.offsetTop-$(window).scrollTop())/$(document).height());
+      });
+  });
+</script>
+
  <style type="text/css">
  body {
   background: #333;
