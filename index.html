@@ -2,12 +2,19 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(window).scroll(function(){
+function setOpacity(){
 	  $(".message>p").each(
     	function(i, p) {
-          $(p).css("opacity", (p.offsetTop-$(window).scrollTop())/$(document).height());
+    		var fromTop = p.offsetTop;
+    		var scrollTop = $(window).scrollTop();
+    		var grad = Math.abs((fromTop-scrollTop-200));
+    		var opacity = 1 - grad/500;
+
+          $(p).css("opacity", opacity);
       });
-  });
+	}
+	$( window ).load(setOpacity);
+	$(window).scroll(setOpacity);
 </script>
 
  <style type="text/css">
@@ -32,6 +39,7 @@
 	padding: 10px;
 	text-align: justify;
 	border-radius: 10px;
+	opacity: 0;
 }
 .heart {
   fill: red;
@@ -40,7 +48,9 @@
   width: 50px;
   animation: pulse 1s ease infinite;
 }
-
+.spacer {
+	height: 800px;
+}
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.3); }
@@ -49,6 +59,7 @@
   </style>
 </head>
 <body>
+<div class="spacer">&nbsp;</div>
 <span class="message">
 	<p>Parce que ça fait plus de 10 ans que j'ai demenagé dans la région pour vivre, d'abord pas loin, puis avec toi...</p>
 </span>
@@ -111,7 +122,7 @@ I
 </svg> 
 
 You
-
+<div class="spacer">&nbsp;</div>
 </body>
 </html>
 
